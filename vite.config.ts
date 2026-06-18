@@ -6,14 +6,30 @@ import { fileURLToPath } from "node:url";
 
 const rootDir = dirname(fileURLToPath(import.meta.url));
 const landingPath = resolve(rootDir, "startmed-landing.html");
+const adminPath = resolve(rootDir, "admin.html");
 
 export default defineConfig({
   plugins: [
     {
-      name: "startmed-landing-as-index",
+      name: "startmed-html-routes",
+      configureServer(server) {
+        server.middlewares.use((request, _response, next) => {
+          const path = request.url?.split("?")[0];
+
+          if (path === "/admin" || path === "/admin/") {
+            request.url = request.url?.replace(path, "/admin.html");
+          }
+
+          next();
+        });
+      },
       transformIndexHtml: {
         order: "pre",
         handler(html, context) {
+          if (["/admin", "/admin/", "/admin/index.html"].includes(context.path)) {
+            return readFileSync(adminPath, "utf8");
+          }
+
           return context.path === "/" || context.path === "/index.html"
             ? readFileSync(landingPath, "utf8")
             : html;
@@ -26,7 +42,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(rootDir, "index.html"),
-        admin: resolve(rootDir, "admin.html"),
+        admin: adminPath,
         landing: landingPath,
         privacy: resolve(rootDir, "privacy.html"),
       },
