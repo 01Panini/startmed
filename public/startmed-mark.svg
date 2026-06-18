@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">StartMed</title>
+  <rect width="64" height="64" rx="18" fill="#18b8a4"/>
+  <path d="M30 14h4v14h14v4H34v18h-4V32H16v-4h14V14Z" fill="#fff"/>
+  <circle cx="47" cy="17" r="5" fill="#d8ff6a"/>
+</svg>
