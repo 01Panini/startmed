@@ -1,4 +1,4 @@
-﻿import { StrictMode, useEffect, useMemo, useState } from "react";
+import { StrictMode, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import type { FormEvent, ReactElement } from "react";
 import type { Session } from "@supabase/supabase-js";
@@ -198,7 +198,7 @@ function AuthScreen(): ReactElement {
   return (
     <main className="admin-login">
       <section className="login-card">
-        <img src="/startmed-logo.svg" alt="StartMed" className="login-logo" />
+        <img src="/startmed-logo-completo.webp" alt="StartMed" className="login-logo" />
         <p className="eyebrow">Acesso protegido</p>
         <h1>CRM StartMed</h1>
         <p>Entre com uma conta criada no Supabase Auth para visualizar leads reais.</p>
@@ -333,7 +333,7 @@ function App(): ReactElement {
     <main className="admin-shell">
       <aside className="sidebar">
         <a className="brand" href="/">
-          <img src="/startmed-mark.svg" alt="" />
+          <img src="/startmed-symbol-gradient.svg" alt="" />
           <span>StartMed</span>
         </a>
 
